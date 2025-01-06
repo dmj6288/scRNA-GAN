@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+#SBATCH -N 1 --ntasks-per-node=6 --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --job-name="PAIR"
+#SBATCH --output=/home/dennis00/scRNA_GAN/slurm_archive/betaVAE_training_%j.out
+
+cd $SLURM_SUBMIT_DIR
+
+cd /home/dennis00/scRNA_GAN/scRNA-GAN
+
+conda activate scRNA-GAN-TF
+
+python3 src/betaVAE_training.py --seed 99 --config configs/betavae_tissues.json --log 1 --parallel 0
+
+echo betaVAE_training.py
+echo "SLURM Job ID        : ${SLURM_JOB_ID}"
