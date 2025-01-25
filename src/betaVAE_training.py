@@ -13,7 +13,7 @@ from torchvision import transforms
 from sklearn.model_selection import train_test_split
 from warmup_scheduler import GradualWarmupScheduler
 
-from model import *
+# from model import *
 from betaVAE import *
 from read_data import *
 from utils import *
@@ -70,7 +70,10 @@ test_labels = []
 for id, dataset in enumerate(path_csv):
     print(dataset)
     df = pd.read_csv(dataset)
-    train_df, test_df = train_test_split(df, test_size=0.2)
+    df_transposed = df.set_index('gene_id').transpose().reset_index()
+    df_transposed.rename(columns={'index': 'wsi_file_name'}, inplace=True)
+
+    train_df, test_df = train_test_split(df_transposed, test_size=0.2)
 
     train_df, val_df = train_test_split(train_df, test_size=0.2)
 
