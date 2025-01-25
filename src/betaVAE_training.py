@@ -108,12 +108,12 @@ val_dataset = RNADataset([val_df])
 test_dataset = RNADataset([test_df])
 
 train_dataloader = DataLoader(train_dataset,batch_size=batch_size, 
-               num_workers=4, shuffle=True)
+               num_workers=16, shuffle=True)
 val_dataloader = DataLoader(val_dataset,batch_size=batch_size, 
-               num_workers=4, 
+               num_workers=16, 
                shuffle=False)
 test_dataloader = DataLoader(test_dataset,batch_size=1, 
-               num_workers=4, 
+               num_workers=16, 
                shuffle=False)
 
 # training

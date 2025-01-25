@@ -470,18 +470,9 @@ def normalize_dfs(train_df, val_df, test_df, labels=False, norm_type='standard')
         x = np.log(x.replace(0, np.nan))
         return x.replace(np.nan, 0)
     # get list of columns to scale
-
-    print(train_df.columns)
-    print(train_df.shape)
-
-    rna_columns = [x for x in train_df['gene_id'] if 'rna_' in x]
+    rna_columns = [x for x in train_df.columns if 'rna_' in x]
     
-    print(rna_columns[1:5])
-
-    train_df = train_df.T
-    val_df   = val_df.T
-    test_df  = test_df.T    
-
+    
     # log transform
     train_df[rna_columns] = train_df[rna_columns].apply(_get_log)
     val_df[rna_columns] = val_df[rna_columns].apply(_get_log)
