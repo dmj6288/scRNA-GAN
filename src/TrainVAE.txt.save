@@ -15,7 +15,7 @@ cd /home/dennis00/scRNA_GAN/scRNA-GAN/src/
 
 conda activate scRNA-GAN-TF
 
-python3 /home/dennis00/scRNA_GAN/scRNA-GAN/src/betaVAE_training.py --seed 99 --config ../configs/betavae_tissues.json --checkpoint ../../checkpoints/betavae_training_tissues/model_dict_best.pt --log 1 --parallel 0
+python3 /home/dennis00/scRNA_GAN/scRNA-GAN/src/betaVAE_training.py --seed 99 --config ../configs/betavae_tissues.json --checkpoint /home/dennis00/scRNA_GAN/checkpoints/betavae_training_tissues/model_dict_best.pt --log 1 --parallel 0
 
 echo betaVAE_training
 echo "SLURM Job ID        : ${SLURM_JOB_ID}"
